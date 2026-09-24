@@ -92,6 +92,30 @@ canvas {
   line-height: 1;
 }
 
+.intro-monogram {
+  color: var(--maroon);
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2.8rem, 5vw, 4.6rem);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+
+.initials-mark {
+  color: var(--gold);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.9rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.initials-mark span {
+  color: var(--maroon);
+  font-style: italic;
+  margin: 0 0.18em;
+}
+
 .eyebrow {
   margin: 16px 0 10px;
   color: var(--maroon);
@@ -124,7 +148,7 @@ canvas {
 }
 
 .intro h1 small {
-  margin: 10px 0 6px;
+  margin: 10px 0 18px;
   color: var(--maroon);
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(1.45rem, 3vw, 2.3rem);
@@ -323,19 +347,6 @@ canvas {
   cursor: crosshair;
 }
 
-.scratch-hint {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  pointer-events: none;
-  color: #fff;
-  text-transform: uppercase;
-  font-size: .8rem;
-  font-weight: 600;
-  letter-spacing: .18em;
-  text-shadow: 0 1px 3px rgba(0,0,0,.2);
-}
 
 .revealed-message {
   opacity: 0;
@@ -570,14 +581,6 @@ canvas {
 }
 
 
-@media (min-width: 721px) {
-  .scratch-hint {
-    inset: auto 0 54px 0;
-    height: auto;
-    display: block;
-    text-align: center;
-  }
-}
 
 
 .intro .quote,

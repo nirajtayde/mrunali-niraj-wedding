@@ -18,7 +18,6 @@ openCurtain.addEventListener("touchend", (event) => {
 
 const canvas = document.getElementById("scratchCanvas");
 const ctx = canvas.getContext("2d", { willReadFrequently: true });
-const scratchHint = document.getElementById("scratchHint");
 const revealedMessage = document.getElementById("revealedMessage");
 
 let scratching = false;
@@ -86,7 +85,6 @@ function scratchAt(event) {
   ctx.arc(x, y, Math.max(24, rect.width * 0.055), 0, Math.PI * 2);
   ctx.fill();
 
-  scratchHint.style.opacity = "0";
 
   scratchChecks++;
   if (scratchChecks % 8 === 0) {
@@ -121,7 +119,6 @@ function revealDate() {
 
   canvas.style.transition = "opacity .65s ease";
   canvas.style.opacity = "0";
-  scratchHint.style.display = "none";
   revealedMessage.classList.add("show");
 
   setTimeout(() => {
