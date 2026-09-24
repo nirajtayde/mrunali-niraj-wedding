@@ -57,34 +57,32 @@ canvas {
   overflow: hidden;
   isolation: isolate;
   background:
-    radial-gradient(circle at top, rgba(255,255,255,.7), transparent 35%),
+    radial-gradient(circle at 20% 15%, rgba(255,255,255,.72), transparent 34%),
+    radial-gradient(circle at 82% 20%, rgba(191,64,191,.08), transparent 28%),
+    radial-gradient(circle at 50% 85%, rgba(129,0,0,.07), transparent 32%),
     linear-gradient(160deg, #faede6, #f6e7e4);
 }
 
-.invitation-card {
+.intro-card {
   position: relative;
   z-index: 1;
-  width: min(88vw, 760px);
-  padding: clamp(42px, 7vw, 82px) clamp(24px, 7vw, 76px);
+  width: 100%;
+  min-height: 100svh;
+  padding: clamp(56px, 8vw, 96px) clamp(22px, 8vw, 96px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  border: 1px solid rgba(191, 64, 191, 0.2);
-  background: rgba(255, 250, 247, 0.78);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(8px);
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
-.invitation-card::before,
-.invitation-card::after {
-  content: "";
-  position: absolute;
-  inset: 12px;
-  border: 1px solid rgba(129, 0, 0, 0.18);
-  pointer-events: none;
-}
-
-.invitation-card::after {
-  inset: 20px;
-  border-color: rgba(191, 64, 191, 0.13);
+.intro-card::before,
+.intro-card::after {
+  display: none;
 }
 
 .ornament,
@@ -105,15 +103,16 @@ canvas {
 
 .quote {
   margin: 20px auto;
+  max-width: 760px;
   color: var(--purple);
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(1.1rem, 2.1vw, 1.45rem);
+  font-size: clamp(1.15rem, 2.1vw, 1.6rem);
   font-style: italic;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 .intro h1 {
-  margin: 24px 0;
+  margin: 26px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -121,27 +120,27 @@ canvas {
   font-family: "Great Vibes", cursive;
   font-weight: 400;
   line-height: 0.95;
-  font-size: clamp(3.6rem, 10vw, 7.4rem);
+  font-size: clamp(4.2rem, 11vw, 8.6rem);
 }
 
 .intro h1 small {
   margin: 10px 0 6px;
   color: var(--maroon);
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(1.4rem, 3vw, 2.15rem);
-  letter-spacing: 0.16em;
+  font-size: clamp(1.45rem, 3vw, 2.3rem);
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
 .bottom-quote {
-  margin-top: 28px;
+  margin-top: 30px;
 }
 
 .tap-hint {
-  margin: 32px 0 0;
+  margin: 38px 0 0;
   color: var(--maroon);
-  font-size: 0.75rem;
-  letter-spacing: 0.13em;
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   animation: pulse 1.8s infinite;
 }
@@ -149,6 +148,24 @@ canvas {
 @keyframes pulse {
   0%, 100% { opacity: .55; transform: translateY(0); }
   50% { opacity: 1; transform: translateY(-3px); }
+}
+
+@media (max-width: 720px) {
+  .intro-card {
+    padding: 48px 20px 38px;
+  }
+
+  .intro h1 {
+    font-size: clamp(4rem, 19vw, 6.2rem);
+  }
+
+  .quote {
+    max-width: 92%;
+  }
+
+  .tap-hint {
+    margin-top: 30px;
+  }
 }
 
 /* Curtain */
@@ -494,11 +511,6 @@ canvas {
 
 /* Responsive */
 @media (max-width: 720px) {
-  .invitation-card {
-    width: 88vw;
-    padding: 42px 22px;
-  }
-
   .event-grid {
     grid-template-columns: 1fr;
   }
@@ -564,5 +576,40 @@ canvas {
     height: auto;
     display: block;
     text-align: center;
+  }
+}
+
+
+.intro .quote,
+.intro .eyebrow,
+.intro .tap-hint {
+  max-width: 760px;
+}
+
+.intro .quote {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.intro h1 {
+  margin: 28px 0;
+}
+
+.intro h1 span {
+  display: block;
+}
+
+.tap-hint {
+  margin-top: 34px;
+  padding-top: 8px;
+}
+
+@media (max-width: 720px) {
+  .invitation-card::before {
+    inset: 14px;
+  }
+
+  .invitation-card::after {
+    inset: 24px;
   }
 }
