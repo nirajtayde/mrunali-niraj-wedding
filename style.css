@@ -1,0 +1,558 @@
+/* =========================
+   Wedding Invitation Theme
+   ========================= */
+
+:root {
+  --maroon: #6f1839;
+  --maroon-dark: #4d1028;
+  --purple: #6f4a8e;
+  --purple-deep: #56356f;
+  --pastel: #f8eee8;
+  --pastel-soft: #fff8f4;
+  --rose: #ddb4b8;
+  --gold: #c89f65;
+  --ink: #4d3f49;
+  --white: #fffdfb;
+  --shadow: 0 18px 50px rgba(91, 38, 63, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 15% 15%, rgba(221, 180, 184, 0.24), transparent 35%),
+    radial-gradient(circle at 85% 25%, rgba(111, 74, 142, 0.08), transparent 32%),
+    linear-gradient(180deg, #fbf0ea 0%, #f7ebe8 48%, #f8efe8 100%);
+  font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
+}
+
+body.invitation-open {
+  overflow-y: auto;
+}
+
+body:not(.invitation-open) {
+  overflow: hidden;
+}
+
+button,
+canvas {
+  touch-action: none;
+}
+
+/* Intro */
+.intro {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at top, rgba(255,255,255,.7), transparent 35%),
+    linear-gradient(160deg, #faede6, #f6e7e4);
+}
+
+.invitation-card {
+  position: relative;
+  z-index: 1;
+  width: min(88vw, 760px);
+  padding: clamp(42px, 7vw, 82px) clamp(24px, 7vw, 76px);
+  text-align: center;
+  border: 1px solid rgba(111, 74, 142, 0.2);
+  background: rgba(255, 250, 247, 0.78);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+}
+
+.invitation-card::before,
+.invitation-card::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(111, 24, 57, 0.18);
+  pointer-events: none;
+}
+
+.invitation-card::after {
+  inset: 20px;
+  border-color: rgba(111, 74, 142, 0.13);
+}
+
+.ornament,
+.mini-ornament {
+  color: var(--gold);
+  font-size: 32px;
+  line-height: 1;
+}
+
+.eyebrow {
+  margin: 16px 0 10px;
+  color: var(--maroon);
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.quote {
+  margin: 20px auto;
+  color: var(--purple);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.1rem, 2.1vw, 1.45rem);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.intro h1 {
+  margin: 24px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--purple-deep);
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  line-height: 0.95;
+  font-size: clamp(3.6rem, 10vw, 7.4rem);
+}
+
+.intro h1 small {
+  margin: 10px 0 6px;
+  color: var(--maroon);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.4rem, 3vw, 2.15rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.bottom-quote {
+  margin-top: 28px;
+}
+
+.tap-hint {
+  margin: 32px 0 0;
+  color: var(--maroon);
+  font-size: 0.75rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: .55; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-3px); }
+}
+
+/* Curtain */
+.curtain {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50.6%;
+  z-index: 5;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #4b0e25 0 5%,
+      #72173b 5% 11%,
+      #8b2349 11% 16%,
+      #62132f 16% 22%
+    );
+  box-shadow: inset 0 0 35px rgba(0,0,0,.28);
+  transition: transform 1.6s cubic-bezier(.76,0,.24,1);
+}
+
+.curtain::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 28px;
+  background: linear-gradient(180deg, #4e0c27, #7d1b40);
+}
+
+.curtain-left {
+  left: 0;
+  transform-origin: left center;
+}
+
+.curtain-right {
+  right: 0;
+  transform-origin: right center;
+}
+
+.intro.opened .curtain-left {
+  transform: translateX(-104%);
+}
+
+.intro.opened .curtain-right {
+  transform: translateX(104%);
+}
+
+.open-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.intro.opened .open-layer {
+  pointer-events: none;
+}
+
+/* Sections */
+.section {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 86px 18px;
+}
+
+.section-inner {
+  width: min(100%, 1040px);
+  text-align: center;
+}
+
+.section h2 {
+  margin: 0;
+  color: var(--maroon);
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(3.6rem, 8vw, 6.5rem);
+  font-weight: 400;
+}
+
+.section-copy {
+  width: min(92%, 660px);
+  margin: 16px auto 38px;
+  color: var(--purple);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.18rem, 2.7vw, 1.5rem);
+  line-height: 1.55;
+}
+
+/* Scratch card */
+.scratch-wrap {
+  position: relative;
+  width: min(92vw, 520px);
+  height: 310px;
+  margin: 24px auto 14px;
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(111, 24, 57, .14);
+  background: var(--white);
+}
+
+.scratch-underlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(221,180,184,.28), transparent 30%),
+    linear-gradient(145deg, #fff8f3, #f8ece8);
+}
+
+.scratch-label {
+  margin: 10px 0 0;
+  color: var(--purple);
+  text-transform: uppercase;
+  font-size: .74rem;
+  letter-spacing: .18em;
+}
+
+.date-number {
+  color: var(--maroon);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 7.6rem;
+  font-weight: 700;
+  line-height: .9;
+}
+
+.date-month {
+  color: var(--purple-deep);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.date-day {
+  color: var(--maroon);
+  margin: 8px 0 0;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  font-size: .74rem;
+}
+
+#scratchCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+}
+
+.scratch-hint {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-shadow: 0 1px 3px rgba(0,0,0,.2);
+}
+
+.revealed-message {
+  opacity: 0;
+  transform: translateY(8px);
+  margin: 22px 0 0;
+  color: var(--maroon);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.25rem;
+  transition: .5s ease;
+}
+
+.revealed-message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-cue {
+  margin-top: 52px;
+  color: var(--purple);
+  font-size: .76rem;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.arrow {
+  color: var(--maroon);
+  font-size: 2rem;
+  line-height: 1;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(7px); }
+}
+
+/* Event cards */
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  width: min(100%, 920px);
+  margin: 36px auto 0;
+}
+
+.event-card {
+  position: relative;
+  padding: 34px 28px;
+  border-radius: 26px;
+  border: 1px solid rgba(111, 74, 142, .16);
+  background: rgba(255, 250, 247, .78);
+  box-shadow: 0 14px 38px rgba(86, 53, 111, .09);
+  overflow: hidden;
+}
+
+.event-card::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  top: -55px;
+  right: -40px;
+  background: rgba(111, 24, 57, .07);
+}
+
+.event-card::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(200, 159, 101, .23);
+  border-radius: 18px;
+  pointer-events: none;
+}
+
+.event-icon {
+  font-size: 2rem;
+}
+
+.event-tag {
+  color: var(--maroon);
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  font-weight: 600;
+}
+
+.event-card h3 {
+  margin: 8px 0 10px;
+  color: var(--purple-deep);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+}
+
+.event-date {
+  margin: 0 0 14px;
+  color: var(--maroon);
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.event-address {
+  margin: 0;
+  color: #675665;
+  font-size: .92rem;
+  line-height: 1.75;
+}
+
+.wedding-card {
+  grid-column: 1 / -1;
+  background:
+    radial-gradient(circle at top center, rgba(221,180,184,.16), transparent 40%),
+    rgba(255,250,247,.84);
+}
+
+.closing {
+  margin-top: 58px;
+  color: var(--purple);
+}
+
+.closing p {
+  margin: 10px 0 4px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.3rem;
+}
+
+.closing h4 {
+  margin: 2px 0 8px;
+  color: var(--maroon);
+  font-family: "Great Vibes", cursive;
+  font-size: 3rem;
+  font-weight: 400;
+}
+
+.closing span {
+  color: var(--purple-deep);
+  letter-spacing: .3em;
+  font-size: .75rem;
+}
+
+/* Petals */
+.petal-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  top: -30px;
+  width: 13px;
+  height: 20px;
+  border-radius: 70% 30% 70% 30%;
+  background: #d99da6;
+  opacity: .9;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  0% {
+    transform: translate3d(0, -5vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% { opacity: .9; }
+  100% {
+    transform: translate3d(var(--drift), 110vh, 0) rotate(720deg);
+    opacity: .1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 720px) {
+  .invitation-card {
+    width: 88vw;
+    padding: 42px 22px;
+  }
+
+  .event-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wedding-card {
+    grid-column: auto;
+  }
+
+  .section {
+    padding: 72px 16px;
+  }
+
+  .scratch-wrap {
+    height: 280px;
+  }
+
+  .date-number {
+    font-size: 6.5rem;
+  }
+
+  .date-month {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .quote {
+    font-size: 1rem;
+  }
+
+  .tap-hint {
+    font-size: .64rem;
+  }
+
+  .scratch-wrap {
+    width: 94vw;
+    height: 265px;
+  }
+
+  .event-card {
+    padding: 30px 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
