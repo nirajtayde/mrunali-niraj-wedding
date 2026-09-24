@@ -4,11 +4,6 @@ const openCurtain = document.getElementById("openCurtain");
 function revealInvitation() {
   intro.classList.add("opened");
   document.body.classList.add("invitation-open");
-
-  setTimeout(() => {
-    const saveDate = document.getElementById("save-the-date");
-    saveDate?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, 1450);
 }
 
 openCurtain.addEventListener("click", revealInvitation);
@@ -41,9 +36,9 @@ function sizeCanvas() {
 
   // Soft maroon-purple foil layer
   const gradient = ctx.createLinearGradient(0, 0, rect.width, rect.height);
-  gradient.addColorStop(0, "#6f1839");
-  gradient.addColorStop(0.5, "#8b4564");
-  gradient.addColorStop(1, "#6f4a8e");
+  gradient.addColorStop(0, "#810000");
+  gradient.addColorStop(0.5, "#a32475");
+  gradient.addColorStop(1, "#BF40BF");
 
   ctx.globalCompositeOperation = "source-over";
   ctx.fillStyle = gradient;

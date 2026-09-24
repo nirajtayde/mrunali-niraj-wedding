@@ -3,10 +3,10 @@
    ========================= */
 
 :root {
-  --maroon: #6f1839;
-  --maroon-dark: #4d1028;
-  --purple: #6f4a8e;
-  --purple-deep: #56356f;
+  --maroon: #810000;
+  --maroon-dark: #5f0000;
+  --purple: #BF40BF;
+  --purple-deep: #9f249f;
   --pastel: #f8eee8;
   --pastel-soft: #fff8f4;
   --rose: #ddb4b8;
@@ -29,7 +29,7 @@ body {
   color: var(--ink);
   background:
     radial-gradient(circle at 15% 15%, rgba(221, 180, 184, 0.24), transparent 35%),
-    radial-gradient(circle at 85% 25%, rgba(111, 74, 142, 0.08), transparent 32%),
+    radial-gradient(circle at 85% 25%, rgba(191, 64, 191, 0.08), transparent 32%),
     linear-gradient(180deg, #fbf0ea 0%, #f7ebe8 48%, #f8efe8 100%);
   font-family: "Montserrat", sans-serif;
   overflow-x: hidden;
@@ -67,7 +67,7 @@ canvas {
   width: min(88vw, 760px);
   padding: clamp(42px, 7vw, 82px) clamp(24px, 7vw, 76px);
   text-align: center;
-  border: 1px solid rgba(111, 74, 142, 0.2);
+  border: 1px solid rgba(191, 64, 191, 0.2);
   background: rgba(255, 250, 247, 0.78);
   box-shadow: var(--shadow);
   backdrop-filter: blur(8px);
@@ -78,13 +78,13 @@ canvas {
   content: "";
   position: absolute;
   inset: 12px;
-  border: 1px solid rgba(111, 24, 57, 0.18);
+  border: 1px solid rgba(129, 0, 0, 0.18);
   pointer-events: none;
 }
 
 .invitation-card::after {
   inset: 20px;
-  border-color: rgba(111, 74, 142, 0.13);
+  border-color: rgba(191, 64, 191, 0.13);
 }
 
 .ornament,
@@ -161,10 +161,10 @@ canvas {
   background:
     repeating-linear-gradient(
       90deg,
-      #4b0e25 0 5%,
-      #72173b 5% 11%,
-      #8b2349 11% 16%,
-      #62132f 16% 22%
+      #5d0000 0 5%,
+      #810000 5% 11%,
+      #9c1a1a 11% 16%,
+      #700000 16% 22%
     );
   box-shadow: inset 0 0 35px rgba(0,0,0,.28);
   transition: transform 1.6s cubic-bezier(.76,0,.24,1);
@@ -177,7 +177,7 @@ canvas {
   right: 0;
   bottom: 0;
   height: 28px;
-  background: linear-gradient(180deg, #4e0c27, #7d1b40);
+  background: linear-gradient(180deg, #5d0000, #810000);
 }
 
 .curtain-left {
@@ -251,7 +251,7 @@ canvas {
   border-radius: 26px;
   overflow: hidden;
   box-shadow: var(--shadow);
-  border: 1px solid rgba(111, 24, 57, .14);
+  border: 1px solid rgba(129, 0, 0, .14);
   background: var(--white);
 }
 
@@ -368,9 +368,9 @@ canvas {
   position: relative;
   padding: 34px 28px;
   border-radius: 26px;
-  border: 1px solid rgba(111, 74, 142, .16);
+  border: 1px solid rgba(191, 64, 191, .16);
   background: rgba(255, 250, 247, .78);
-  box-shadow: 0 14px 38px rgba(86, 53, 111, .09);
+  box-shadow: 0 14px 38px rgba(159, 36, 159, .09);
   overflow: hidden;
 }
 
@@ -382,7 +382,7 @@ canvas {
   border-radius: 50%;
   top: -55px;
   right: -40px;
-  background: rgba(111, 24, 57, .07);
+  background: rgba(129, 0, 0, .07);
 }
 
 .event-card::after {
