@@ -556,3 +556,13 @@ canvas {
     transition-duration: .01ms !important;
   }
 }
+
+
+@media (min-width: 721px) {
+  .scratch-hint {
+    inset: auto 0 54px 0;
+    height: auto;
+    display: block;
+    text-align: center;
+  }
+}
